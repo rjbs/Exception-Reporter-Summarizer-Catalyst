@@ -71,7 +71,7 @@ sub summarize_request {
 
 sub summarize_response {
   my ($self, $c) = @_;
-  Carp::confess("...unimplemented...";
+  Carp::confess("...unimplemented...");
   my $res = $c->res;
   return {
     filename => 'response.txt',
