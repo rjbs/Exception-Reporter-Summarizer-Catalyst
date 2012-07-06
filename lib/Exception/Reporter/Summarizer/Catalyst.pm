@@ -44,9 +44,27 @@ sub summarize {
 sub summarize_request {
   my ($self, $c) = @_;
   my $req = $c->req;
+
+  my $cookie_hash = $req->cookies;
+  my %cookie_str = map {; $_ => $cookie_hash->{$_}->value } keys %$cookie_hash;
+
+  my $to_dump = {
+    action           => $req->action,
+    address          => $req->address,
+    arguments        => $req->arguments,
+    body_parameters  => $req->body_parameters,
+    cookies          => \%cookie_str,
+    headers          => $req->headers,
+    hostname         => $req->hostname,
+    method           => $req->get,
+    query_parameters => $req->query_parameters,
+    uri              => "" . $req->uri,
+    uploads          => $req->uploads,
+  };
+
   return {
     filename => 'request.txt',
-    %{ $self->dump($req, { basename => 'request' })  },
+    %{ $self->dump($to_dump, { basename => 'request' })  },
     ident    => 'catalyst request',
   };
 }
