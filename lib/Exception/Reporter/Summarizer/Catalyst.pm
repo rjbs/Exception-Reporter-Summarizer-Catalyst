@@ -2,6 +2,7 @@ use strict;
 use warnings;
 package Exception::Reporter::Summarizer::Catalyst;
 use parent 'Exception::Reporter::Summarizer';
+# ABSTRACT: a summarizer for Catalyst applications
 
 use Try::Tiny;
 
