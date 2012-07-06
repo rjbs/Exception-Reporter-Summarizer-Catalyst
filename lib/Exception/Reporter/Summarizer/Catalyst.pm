@@ -7,6 +7,7 @@ use parent 'Exception::Reporter::Summarizer';
 use Try::Tiny;
 
 sub can_summarize {
+  my ($self, $entry) = @_;
   return try { $entry->[1]->isa('Catalyst') };
 }
 
