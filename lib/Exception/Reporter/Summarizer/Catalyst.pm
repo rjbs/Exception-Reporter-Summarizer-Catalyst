@@ -56,7 +56,7 @@ sub summarize_request {
     cookies          => \%cookie_str,
     headers          => $req->headers,
     hostname         => $req->hostname,
-    method           => $req->get,
+    method           => $req->method,
     query_parameters => $req->query_parameters,
     uri              => "" . $req->uri,
     uploads          => $req->uploads,
