@@ -30,13 +30,13 @@ sub summarize {
     ident => 'Catalyst application ' . (ref $c),
   });
 
-  my @summaries, $self->summarize_request($c);
-  # my @summaries, $self->summarize_response($c);
-  my @summaries, $self->summarize_stash($c);
-  my @summaries, $self->summarize_errors($c);
+  push @summaries, $self->summarize_request($c);
+  # push @summaries, $self->summarize_response($c);
+  push @summaries, $self->summarize_stash($c);
+  push @summaries, $self->summarize_errors($c);
 
-  my @summaries, $self->summarize_user($c);
-  my @summaries, $self->summarize_session($c);
+  push @summaries, $self->summarize_user($c);
+  push @summaries, $self->summarize_session($c);
 
   return @summaries;
 }
