@@ -4,6 +4,14 @@ package Exception::Reporter::Summarizer::Catalyst;
 use parent 'Exception::Reporter::Summarizer';
 # ABSTRACT: a summarizer for Catalyst applications
 
+=head1 OVERVIEW
+
+If added as a summarizer to an L<Exception::Reporter>, this plugin will
+summarize Catalyst objects, adding summaries for the request, stash, errors,
+user, and session.
+
+=cut
+
 use Try::Tiny;
 
 sub can_summarize {
