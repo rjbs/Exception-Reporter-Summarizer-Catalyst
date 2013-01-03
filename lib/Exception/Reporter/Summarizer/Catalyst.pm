@@ -23,11 +23,14 @@ being explicit if you're concerned about this behavior.
 
 use Try::Tiny;
 
-has resolve_hostname => (
-  is  => 'ro',
-  isa => 'Bool',
-  default => 1,
-);
+sub new {
+  my ($class, $arg) = @_;
+  $arg ||= {};
+
+  return bless { resolve_hostname => !! $arg->{resolve_hostname} } => $class;
+}
+
+sub resolve_hostname { $_[0]->{resolve_hostname} }
 
 sub can_summarize {
   my ($self, $entry) = @_;
