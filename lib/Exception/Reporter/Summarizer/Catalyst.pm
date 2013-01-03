@@ -85,6 +85,7 @@ sub summarize_request {
     query_parameters => $req->query_parameters,
     uri              => "" . $req->uri,
     uploads          => $req->uploads,
+    path             => $req->path,
 
     ($self->resolve_hostname ? (hostname => $req->hostname) : ()),
   };
