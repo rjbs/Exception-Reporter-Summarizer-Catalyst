@@ -83,7 +83,7 @@ sub summarize_response {
   my $res = $c->res;
   return {
     filename => 'response.txt',
-    %{ $self->dump($res, { basename => 'resposne' })  },
+    %{ $self->dump($res, { basename => 'response' })  },
     ident    => 'catalyst response',
   };
 }
