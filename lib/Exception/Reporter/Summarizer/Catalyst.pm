@@ -10,9 +10,24 @@ If added as a summarizer to an L<Exception::Reporter>, this plugin will
 summarize Catalyst objects, adding summaries for the request, stash, errors,
 user, and session.
 
+=attr resolve_hostname
+
+If true, the summary will include the hostname of the remote client.  Catalyst
+I<always> resolves this hostname the first time it's requested and I<never>
+accepts it from the server.  That means it might be slow.
+
+Right now, this defaults to true.  It might default to false later.  Consider
+being explicit if you're concerned about this behavior.
+
 =cut
 
 use Try::Tiny;
+
+has resolve_hostname => (
+  is  => 'ro',
+  isa => 'Bool',
+  default => 1,
+);
 
 sub can_summarize {
   my ($self, $entry) = @_;
@@ -63,11 +78,12 @@ sub summarize_request {
     body_parameters  => $req->body_parameters,
     cookies          => \%cookie_str,
     headers          => $req->headers,
-    hostname         => $req->hostname,
     method           => $req->method,
     query_parameters => $req->query_parameters,
     uri              => "" . $req->uri,
     uploads          => $req->uploads,
+
+    ($self->resolve_hostname ? (hostname => $req->hostname) : ()),
   };
 
   return {

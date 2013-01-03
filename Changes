@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+          add resolve_hostname option (thanks for pointing it out, frew)
 
 0.001     2012-12-31 08:44:08 America/New_York
           first release after long internal use
