@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.003     2013-01-04 08:35:39 America/New_York
+          include the request path in the summary (thanks, frew)
+
 0.002     2013-01-03 11:04:17 America/New_York
           add resolve_hostname option (thanks for pointing it out, frew)
 
